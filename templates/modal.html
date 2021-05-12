@@ -1,0 +1,27 @@
+
+       <div class="modal-body" style="padding:0">
+            <div class="modal-header" style="margin-bottom:25px;">
+            <button style="color:white" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h4 class="modal-title" style="color:white">Title</h4>
+            </div>
+            <!-- <input type="hidden" value="dodajVijest" name="action_id"> -->
+            <div class="form-group">
+            <label class="col-md-3 control-label">Naziv</label>
+            <div class="col-md-8">
+            <input required type="text" id="naziv" ng-model="naziv" class="form-control" placeholder="Naziv" name="naziv" /></div>
+            <label class="col-md-3 control-label">Datum</label>
+            <div class="col-md-8">
+            <input required type="date" ng-model="datum" id="datum" class="form-control" name="datum" /></div>
+        <label class="col-md-3 control-label">Tekst</label>
+            <div class="col-md-8">
+            <input required type="text" ng-model="tekst" id="tekst" class="form-control" name="tekst" placeholder="Tekst" /></div>
+            <div class="modal-footer">
+            <button type="submit" class="btn btn-success btn-s"  ng-click="Dodaj()">Spremi</button>
+            <button type="button" class="btn btn-success btn-s" data-dismiss="modal">Zatvori</button>
+            </div>
+        </div>
+
+
+
+
+   

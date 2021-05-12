@@ -1,92 +1,77 @@
-var oModul = angular.module('oModul', ['ngRoute']);
 
-oModul.config(function($routeProvider){
-    $routeProvider.when('/', {
-   templateUrl: 'predlosci/naslovna.html',
-   controller: 'naslovnicaKontroler'
-   });
-   $routeProvider.when('/taskovi', {
-    templateUrl: 'predlosci/taskovi.html',
-    controller: 'taskKontroler'
-   });
-   $routeProvider.when('/trgovina', {
-    templateUrl: 'predlosci/trgovina.html',
-    controller: 'trgovinaKontroler'
-   });
-   $routeProvider.otherwise({
-   template:'Došlo je do pogreške'
-   });
-   });
-   
-   //definicija naslovnicaKontroler
-   oModul.controller('naslovnicaKontroler', function ($scope) {
-    $scope.pozdravnaPoruka = "Nalazite se na naslovnici";
-   });
-   //definicija taskKontroler
-   oModul.controller('taskKontroler', function ($scope) {
-    $scope.pozdravnaPoruka = "Nalazite se u taskKontroler..";
-    $scope.obrisi=function(element){
-    const index = $scope.oZadaci.indexOf(element.task);
-    $scope.oZadaci.splice(index, 1);
+var oVijestiModul = angular.module('vijesti-app', []);
+
+
+oVijestiModul.controller('naslovniController', function ($scope, $http,modal) {
+    $scope.oVijesti = [];
+    $scope.modal=modal;
+    $scope.Dodaj = function () {
+
+        nazivVijesti = $scope.naziv;
+        datumVijesti = $("#datum").val();   
+        tekstVijesti = $scope.tekst;
+        id = Math.max($scope.oVijesti.post_id);
+        $scope.oVijesti.push({ post_id: id++, post_naziv: $scope.naziv, datum: datumVijesti, post_tekst: $scope.tekst });
     }
-    $scope.spremi = function()
-    {   
-        noviId=$scope.oZadaci.length;
-        $scope.oZadaci.push({id:++noviId,name:$scope.zadatak});
-    }
-    $scope.oZadaci = [
-        {
-        id: 1,
-        name: 'Proučiti predložak'
-        },
-        {
-        id: 2,
-        name: 'Položiti blic'
-        },
-        {
-        id: 3,
-        name: 'Riješiti obavezne zadatke'
+
+    $http({
+        method: "GET",
+        url: "./vijesti.json"
+    }).then(function (response) {
+        //console.log(response);
+        $scope.oVijesti = response.data;
+    }, function (response) {
+        console.log('Doslo je do poreške');
+    });
+});
+
+oVijestiModul.filter('promijeniFormat', function () {
+    return function (tekst) {
+        var sRezultat = "";
+        if (tekst != undefined) {
+            sRezultat = tekst.split("-").join(".");
         }
-        ]; 
-   });
-   //definicija trgovinaKontroler
-   oModul.controller('trgovinaKontroler', function ($scope) {
-    $scope.pozdravnaPoruka = "Nalazite se u trgovinaKontroler..";
-     $scope.nLista=[];
-     $scope.Izracunaj=function(x){
-         return x.noviProizvodi.cijena*document.getElementById(x.noviProizvodi.id).value;
-     }
-    $scope.dodaj=function(element){
-    $scope.nLista.push(element.proizvod);
-    }
-    
-    $scope.dajCijenu = function (noviElement)
-    {   
-    cijena=noviElement.noviProizvodi.dostupna_kolicina*noviElement.noviProizvodi.cijena;
-     return cijena;
-    }
+        return sRezultat;
+    };
+});
 
-    $scope.oProizvodi = [
-        {
-        id: 1,
-        name: 'Kruh',
-        cijena: '6',
-        dostupna_kolicina: '25'
-        },
-        {
-            id: 2,
-            name: 'Mlijeko',
-            cijena: '10',
-            dostupna_kolicina: '50'
-        },
-        {
-            id: 3,
-            name: 'Vrhnje',
-            cijena: '20',
-            dostupna_kolicina: '100'
-        }
-        ]; 
-   });
-   
+oVijestiModul.service('modal', function ($rootScope) {
 
-  
+
+    // this.Dodaj = function()
+    // {
+    //     console.log("Tst");
+    // }
+
+    // var self = this;
+    // //private shared variable
+    // var sharedVariables = { };
+    // self.getSharedVariables = getSharedVariables;
+    // self.setVariable = setVariable;
+
+    // //function declarations
+    // function getSharedVariables() {
+    //     return sharedVariables;
+    // }
+    // function setVariable() {
+    //     sharedVariables[paramName] = value;
+    // }
+
+
+    this.otvoriModal = function (sHref) {
+        $('#modals').removeData('bs.modal');
+        $('#modals').modal
+            ({
+                remote: sHref,
+                show: true
+            });
+    };
+});
+
+
+oVijestiModul.directive("prikaziVijestiSve", function () {
+    return {
+        restrict: "E",
+        templateUrl: "templates/vijesti.html"
+    };
+});

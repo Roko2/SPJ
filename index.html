@@ -1,18 +1,75 @@
 <!DOCTYPE html>
-<html ng-app="oModul" lang="hr">
+<html lang="en" ng-app="vijesti-app">
 <head>
     <meta charset="UTF-8">
-    <title>Vjezba 6</title>
-    <script src="js/angular.min.js"></script>
-    <script src="js/node_modules/angular-route/angular-route.min.js"></script>
-    <script src="js/app.js"></script>   
+    <title>Pregled vijesti</title>
+    <script src="assets/plugins/angularjs/angular.min.js"></script>
+    <script src="assets/plugins/angularjs/angular-route.min.js"></script>
+    <script src="assets/plugins/jquery/jquery-3.2.1.min.js"></script>
+    <script src="js/app.js"></script>
+    <link rel="stylesheet" href="assets/plugins/bootstrap-3.3.7-dist/css/bootstrap.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    <ul>
-        <li><a href="#!/">Naslovna</a></li>
-        <li><a href="#!/taskovi">Taskovi</a></li>
-        <li><a href="#!/trgovina">Trgovina</a></li>
-    </ul>
-    <div ng-view></div>
+<body ng-controller="naslovniController">
+
+	<div class="container-fluid">
+		<header>
+		    <nav class="navbar navbar-default navbar-fixed-top">
+		        <div class="container-fluid">
+		            <div class="navbar-header">
+		                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+		                    <span class="icon-bar"></span>
+		                    <span class="icon-bar"></span>
+		                    <span class="icon-bar"></span>
+		             </button>
+		                <a class="navbar-brand" href="index.html"><img src="img/vsmti_logo.png"></a>
+		            </div>
+		            <div class="collapse navbar-collapse" id="main-navbar">
+		                <ul class="nav navbar-nav">
+		                    <li class="active"><a href="#!/">Pregled vijesti</a></li>
+		                </ul>
+		            </div>
+		        </div>
+		    </nav>
+		</header>
+			<div class="vijesti-container">
+				<h3 class="page-header">Obavijesti studentima</h3><br>
+				<button type="button" data-toggle="modal" data-target="#modals" class="btn btn-primary"><i class="fa fa-plus"></i> Dodavanje vijesti</button><br>
+				<div id="sve-vijesti">
+					<prikazi-vijesti-sve></prikazi-vijesti-sve>
+				</div>
+			</div>
+	</div>
+	<div class="modal fade" id="modals" tabindex="-1" role="dialog" aria-labelledby="" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body" style="padding:0">
+					<div class="modal-header" style="margin-bottom:25px;">
+					<button style="color:white" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" style="color:white">Title</h4>
+					</div>
+					<!-- <input type="hidden" value="dodajVijest" name="action_id"> -->
+					<div class="form-group">
+					<label class="col-md-3 control-label">Naziv</label>
+					<div class="col-md-8">
+					<input required type="text" id="naziv" ng-model="naziv" class="form-control" placeholder="Naziv" name="naziv" /></div>
+					<label class="col-md-3 control-label">Datum</label>
+					<div class="col-md-8">
+					<input required type="date" ng-model="datum" id="datum" class="form-control" name="datum" /></div>
+				<label class="col-md-3 control-label">Tekst</label>
+					<div class="col-md-8">
+					<input required type="text" ng-model="tekst" id="tekst" class="form-control" name="tekst" placeholder="Tekst" /></div>
+					<div class="modal-footer">
+					<button type="submit" class="btn btn-success btn-s" data-dismiss="modal"  ng-click="Dodaj()">Spremi</button>
+					<button type="button" class="btn btn-success btn-s" data-dismiss="modal">Zatvori</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	
+			<script src="assets/plugins/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
 </body>
 </html>

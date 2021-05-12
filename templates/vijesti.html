@@ -1,0 +1,9 @@
+<div class="media">
+	<div class="media-body">
+		<input style="margin-top: 2px;" type="text" ng-model="inputTekst"/> <br>
+		<dl ng-repeat="vijest in oVijesti | filter: inputTekst">
+			<dt><span class="label label-info">{{vijest.datum | promijeniFormat}}</span> {{vijest.post_naziv}} <button ng-click="oVijesti.splice($index,1)" class="btn btn-danger"><i class="fa fa-trash"></i></button> </dt>
+			<dd>{{vijest.post_tekst}}</dd>
+		</dl>
+	</div>
+</div>
