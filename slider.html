@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Slider</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/slider.css">
+</head>
+<body>
+    <div class="mt-5 sliderContainer">
+        <center>
+    <div class="slideSlika">
+        <img src="img/slider_1.jpg">
+    </div>
+    <div class="slideSlika">
+        <img src="img/slider_2.jpg">
+    </div>
+    <div class="slideSlika">
+        <img src="img/slider_3.jpg">
+    </div>
+    <div class="slideSlika">
+        <img src="img/slider_4.jpg">
+    </div>
+    <div class="slideSlika">
+        <img src="img/slider_5.jpg">
+    </div> 
+</center>
+<button id="lijeviGumb" class="btn btn-primary" onclick="SljedeciSlajd(-1)"> <i class="fa fa-arrow-left" aria-hidden="true"></i> </button> 
+<button id="desniGumb" class="btn btn-primary" onclick="SljedeciSlajd(1)"> <i class="fa fa-arrow-right" aria-hidden="true"></i> </button>
+</div>
+
+<script src="assets/plugins/jquery/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="js/slider.js"></script>
+</body>
+</html>

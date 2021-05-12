@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/konvert.css">
+    <title>Konverter</title>
+</head>
+<body>
+    <center>
+    <div class="unos">
+        <input id="prviUnos" type="number" min="0">
+        <select class="form-select mb-3" id="odabirValute1">
+            <option>Euro</option>
+            <option>Kuna</option>
+            <option>Dolar</option>
+            <option>Kruna</option>
+            <option>Funta</option>
+        </select><br>
+        <div id="drugiUnos"></div>
+        <select class="form-select" id="odabirValute2">
+            <option>Euro</option>
+            <option>Kuna</option>
+            <option>Dolar</option>
+            <option>Kruna</option>
+            <option>Funta</option>
+        </select><br>
+        <button type="button" onclick="Pretvori()" class="btn btn-primary mt-2">Pretvori</button>
+    </div>
+</center>
+<script src="assets/plugins/jquery/node_modules/jquery/dist/jquery.min.js"></script>
+<script src="js/konvert.js"></script>
+</body>
+</html>
