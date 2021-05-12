@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+	<title>Skriptni programski jezici</title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <center><h1>Skriptni programski jezici</h1></center>
+    <label style="margin-left: 4%;">Realni dio</label><label style="margin-left: 7%;">Imaginarni dio</label><br>
+    <label>Z1:</label><input type="number" id="realniDio1"><input type="number" id="imaginarniDio1"><br>
+    <label>Z2:</label><input type="number" id="realniDio2"><input type="number" id="imaginarniDio2"><br><br>
+
+    <label>Opcije-></label>
+    <select onchange="Izracunaj()" name="opcije" id="opcije">
+        <option value="1">Zbrajanje</option>
+        <option value="2">Mnozenje</option>
+      </select>
+      <br><br>
+      <label>Z3:</label><label id="rezultat"></label>
+    <script src="kompleksni_broj.js"></script>
+</body>
+</html>
