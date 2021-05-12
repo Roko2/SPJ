@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div>
+    <h1>{{pozdravnaPoruka}}</h1>
+    <p>Unesite svoje ime:</p>
+<input type="text" ng-model="zadatak"/>
+<button ng-click="spremi()">Spremi u listu</button>
+    <ul>
+    <li ng-repeat="task in oZadaci">
+        {{task.name}}<i ng-click="obrisi(this)" style="margin-left: 5px;" class="fa fa-trash"></i>
+        </li>
+    </ul>
+   </div>
+   
